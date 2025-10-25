@@ -17,15 +17,9 @@ app.get("/", (req, res) => {
 });
 
 // MongoDB Atlas connection
-mongoose.connect(process.env.MONGO_URI)
-  .then(() => {
-    console.log("MongoDB Atlas connected");
+if (require.main === module) {
+  const PORT = process.env.PORT || 3000;
+  app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
+}
 
-    const PORT = process.env.PORT || 5000;
-    app.listen(PORT, () => {
-      console.log(`Server running on port ${PORT}`);
-    });
-  })
-  .catch((err) => {
-    console.error("MongoDB connection error:", err.message);
-  });
+module.exports = app;
