@@ -7,5 +7,4 @@ const contactSchema = new mongoose.Schema({
   messages: { type: String, required: false },
 }, { timestamps: true });
 
-// Explicitly set the collection name to "contact_tb"
 module.exports = mongoose.model("Contact", contactSchema, "contact_tb");
